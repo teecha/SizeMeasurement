@@ -28,7 +28,7 @@ while True:
 
         # Aruco Perimeter
         aruco_perimeter = cv2.arcLength(corners[0], True)
-        print(aruco_perimeter)
+
         # Pixel to cm ratio
         # 44 is the perimeter of the aruco marker we printed
         pixel_cm_ratio = aruco_perimeter / 44
@@ -49,10 +49,20 @@ while True:
             box = cv2.boxPoints(rect)
             box = np.int0(box)
 
-            cv2.circle(img, (int(x), int(y)), 5, (0, 0, 255), -1)
-            cv2.polylines(img, [box], True, (255, 0, 0), 2)
-            cv2.putText(img, "Width {} cm".format(round(object_width, 1)), (int(x - 100), int(y - 20)), cv2.FONT_HERSHEY_PLAIN, 2, (100, 200, 0), 2)
-            cv2.putText(img, "Height {} cm".format(round(object_height, 1)), (int(x - 100), int(y + 15)), cv2.FONT_HERSHEY_PLAIN, 2, (100, 200, 0), 2)
+            if object_width < 10 or object_height < 10:
+                cv2.circle(img, (int(x), int(y)), 5, (0, 0, 255), -1)
+                cv2.polylines(img, [box], True, (255, 0, 0), 2)
+                cv2.putText(img, "Object less than 10cm", (int(x - 100), int(y - 100)), cv2.FONT_HERSHEY_PLAIN, 2, (0,0,200), 2)
+                cv2.putText(img, "Width {} cm".format(round(object_width, 1)), (int(x - 100), int(y - 20)), cv2.FONT_HERSHEY_PLAIN, 2, (100, 200, 0), 2)
+                cv2.putText(img, "Height {} cm".format(round(object_height, 1)), (int(x - 100), int(y + 15)), cv2.FONT_HERSHEY_PLAIN, 2, (100, 200, 0), 2)
+                print("Object goes left")
+            else:
+                cv2.circle(img, (int(x), int(y)), 5, (0, 0, 255), -1)
+                cv2.polylines(img, [box], True, (255, 0, 0), 2)
+                cv2.putText(img, "Object bigger than 10cm", (int(x - 100), int(y - 100)), cv2.FONT_HERSHEY_PLAIN, 2, (100, 0, 0), 2)
+                cv2.putText(img, "Width {} cm".format(round(object_width, 1)), (int(x - 100), int(y - 20)), cv2.FONT_HERSHEY_PLAIN, 2, (100, 200, 0), 2)
+                cv2.putText(img, "Height {} cm".format(round(object_height, 1)), (int(x - 100), int(y + 15)), cv2.FONT_HERSHEY_PLAIN, 2, (100, 200, 0), 2)
+                print("object goes right")
 
 
 
