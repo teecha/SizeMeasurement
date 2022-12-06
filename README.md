@@ -158,4 +158,7 @@ the conversion we compare the size of the object and if the object size is less 
 considered as a large package and will be sent to the left bin.
 
 
+References:
+1. https://opencv.org
+2. https://pysource.com
 
