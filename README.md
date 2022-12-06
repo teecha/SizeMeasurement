@@ -10,6 +10,10 @@ python measure_object_size_camera.py
 For camera calibration and Aruco tag generation follow the code and documentation available at:
 https://github.com/teecha/Aruco_car
 
+Result Image
+![alt text](https://github.com/teecha/SizeMeasurement/blob/main/results/ameOutput.png?raw=true)
+
+
 **Smart Segregation Using Classical Computer Vision**
 
 Computer Vision has gained popularity in the modern world and attracts a lot of
